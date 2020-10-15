@@ -1,8 +1,8 @@
 import base64
-import jiosaavn
+from jiosaavn import __jiosaavn__
 from pyDes import *
 
-def format_song(data,lyrics):
+def format_song(data: dict,lyrics : bool) -> dict:
     try:
         url = data['media_preview_url']
         url = url.replace("preview", "aac")
@@ -26,7 +26,7 @@ def format_song(data,lyrics):
 
     if lyrics:
         if data['has_lyrics']=='true':
-            data['lyrics'] = jiosaavn.get_lyrics(data['id'])
+            data['lyrics'] = __jiosaavn__.get_lyrics(data['id'])
         else:
             data['lyrics'] = None
 
@@ -36,7 +36,7 @@ def format_song(data,lyrics):
         pass
     return data
 
-def format_album(data,lyrics):
+def format_album(data: dict,lyrics: bool) -> dict:
     data['image'] = data['image'].replace("150x150","500x500")
     data['name'] = format(data['name'])
     data['primary_artists'] = format(data['primary_artists'])
@@ -45,17 +45,17 @@ def format_album(data,lyrics):
         song = format_song(song,lyrics)
     return data
 
-def format_playlist(data,lyrics):
+def format_playlist(data: dict,lyrics) -> dict:
     data['firstname'] = format(data['firstname'])
     data['listname'] = format(data['listname'])
     for song in data['songs']:
         song = format_song(song,lyrics)
     return data
 
-def format(string):
+def format(string: str) -> str:
     return string.encode().decode('unicode-escape').replace("&quot;","'").replace("&amp;", "&").replace("&#039;", "'")
 
-def decrypt_url(url):
+def decrypt_url(url: str) -> str:
     des_cipher = des(b"38346591", ECB, b"\0\0\0\0\0\0\0\0",pad=None, padmode=PAD_PKCS5)
     enc_url = base64.b64decode(url.strip())
     dec_url = des_cipher.decrypt(enc_url, padmode=PAD_PKCS5).decode('utf-8')
