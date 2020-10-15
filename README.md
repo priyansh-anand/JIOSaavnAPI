@@ -65,11 +65,11 @@
 
 Clone this repository using
 ```sh
-$ git clone https://github.com/priyansh-anand/JioSaavnAPI
+$ git clone https://github.com/priyansh-anand/JioSaavn-Python.git
 ```
-Enter the directory and change the branch to **python-module**
+Enter the directory
 ```sh
-$ git checkout python-module
+$ cd Jiosaavn-Python
 ```
 Install the module using
 ```sh
