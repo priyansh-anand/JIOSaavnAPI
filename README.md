@@ -69,7 +69,7 @@ $ git clone https://github.com/priyansh-anand/JioSaavn-Python.git
 ```
 Enter the directory
 ```sh
-$ cd Jiosaavn-Python
+$ cd JioSaavn-Python
 ```
 Install the module using
 ```sh
