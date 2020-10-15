@@ -202,21 +202,21 @@ Returns a single song if a Jiosaavn URL is passed as query, else returns list of
 ```
 ---
 
-##### **Playlist URL Endpoint**:
+##### **Playlist URL function**:
 ```python
 >> res = jiosaavn.playlist(query="<insert-jiosaavn-playlist-link>", lyrics=False)
 ```
 
 ---
 
-##### **Album URL Endpoint**:
+##### **Album URL function**:
 ```python
 >> res = jiosaavn.album(query="<insert-jiosaavn-album-link>", lyrics=False)
 ```
 
 ---
 
-##### **Lyrics Endpoint**:
+##### **Lyrics function**:
 ```python
 >> res = jiosaavn.lyrics(query="<insert-jiosaavn-song-link-or-song-id>")
 ```
